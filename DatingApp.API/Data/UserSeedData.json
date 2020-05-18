@@ -113,7 +113,7 @@
           "Country": "San Marino",
           "Photos": [
             {
-              "url": "https://randomuser.me/api/portraits/man/89.jpg",
+              "url": "https://randomuser.me/api/portraits/men/89.jpg",
               "isMain": true,
               "description": "Anim est veniam incididunt aliquip pariatur sit enim."
             }
@@ -133,7 +133,7 @@
           "Country": "France, Metropolitan",
           "Photos": [
             {
-              "url": "https://randomuser.me/api/portraits/man/17.jpg",
+              "url": "https://randomuser.me/api/portraits/men/17.jpg",
               "isMain": true,
               "description": "Dolor fugiat sit aliqua cupidatat cillum ullamco sunt sint quis et ut culpa irure Lorem."
             }
@@ -153,7 +153,7 @@
           "Country": "French Guiana",
           "Photos": [
             {
-              "url": "https://randomuser.me/api/portraits/man/80.jpg",
+              "url": "https://randomuser.me/api/portraits/men/80.jpg",
               "isMain": true,
               "description": "Ipsum consequat do minim commodo dolor reprehenderit tempor aliquip cillum dolor aliquip."
             }
@@ -173,7 +173,7 @@
           "Country": "Suriname",
           "Photos": [
             {
-              "url": "https://randomuser.me/api/portraits/man/46.jpg",
+              "url": "https://randomuser.me/api/portraits/men/46.jpg",
               "isMain": true,
               "description": "Incididunt nostrud tempor ad consectetur do."
             }
@@ -193,7 +193,7 @@
           "Country": "Mauritania",
           "Photos": [
             {
-              "url": "https://randomuser.me/api/portraits/man/18.jpg",
+              "url": "https://randomuser.me/api/portraits/men/18.jpg",
               "isMain": true,
               "description": "Sint velit enim elit nostrud sunt mollit nostrud proident eiusmod sit elit ut."
             }
