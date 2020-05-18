@@ -49,7 +49,6 @@ export class MemberDetailComponent implements OnInit {
         description: photo.description
       });
     }
-    this.alertify.message(imageUrls.length.toString());
     return imageUrls;
   }
 
