@@ -15,6 +15,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 
 using DatingApp.API.Data;
+using Microsoft.AspNetCore.Identity;
+using DatingApp.API.Models;
 
 namespace DatingApp.API
 {
@@ -28,8 +30,10 @@ namespace DatingApp.API
                 var services = scope.ServiceProvider;
                 try {
                     var context = services.GetRequiredService<DataContext>();
+                    var userManager = services.GetRequiredService<UserManager<User>>();
+                    var roleManager = services.GetRequiredService<RoleManager<Role>>();
                     context.Database.Migrate();
-                    Seed.SeedUsers(context);
+                    Seed.SeedUsers(userManager, roleManager);
                 } 
                 catch (Exception ex) 
                 {

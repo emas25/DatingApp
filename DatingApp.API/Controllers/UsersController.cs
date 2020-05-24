@@ -13,7 +13,6 @@ using Microsoft.AspNetCore.Mvc;
 namespace DatingApp.API.Controllers
 {
     [ServiceFilter(typeof(LogUserActivity))]
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
@@ -31,7 +30,7 @@ namespace DatingApp.API.Controllers
         public async Task<IActionResult> GetUsers([FromQuery]UserParams userParams) {
             var currentUserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
-            var userFromRepo = await _repo.GetUser(currentUserId);
+            var userFromRepo = await _repo.GetUser(currentUserId, currentUserId);
 
             userParams.UserId = currentUserId;
 
@@ -51,7 +50,9 @@ namespace DatingApp.API.Controllers
 
         [HttpGet("{id}", Name = "GetUser")]
         public async Task<IActionResult> GetUser(int id) {
-            var user = await _repo.GetUser(id);
+            int currentUserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            var user = await _repo.GetUser(id, currentUserId);
 
             var userToReturn = _mapper.Map<UserForDetailedDto>(user);
 
@@ -61,10 +62,12 @@ namespace DatingApp.API.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateUser(int id, UserForUpdateDto userForUpdateDto)
         {
-            if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+            int currentUserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            
+            if (id != currentUserId)
                 return Unauthorized();
             
-            var userFromRepo = await _repo.GetUser(id);
+            var userFromRepo = await _repo.GetUser(id, currentUserId);
 
             _mapper.Map(userForUpdateDto, userFromRepo);
 
@@ -85,7 +88,7 @@ namespace DatingApp.API.Controllers
             if (like != null)
                 return BadRequest("You already like this user");
             
-            if (_repo.GetUser(recipientId) == null)
+            if (_repo.GetUser(recipientId, id) == null)
                 return NotFound();
 
             like = new Like
